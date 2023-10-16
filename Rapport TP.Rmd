@@ -1,0 +1,31 @@
+---
+title: "Bourdon"
+author: "Arthur"
+date: "2023-10-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+## Objectifs
+
+## Matériels et méthodes
+
+## Résultats
+
+```{r}
+SciViews::R
+```
+
+```{r}
+Bourdon_tab <- read.csv("TP bourdons - Fiche.csv")
+summary(Bourdon_tab)
+```
+
+## Discussion
+
+## Bibliographie
