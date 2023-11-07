@@ -1,6 +1,6 @@
 ---
 title: "Bourdon"
-author: "Arthur"
+author: "Arthur Fourez, Maréva Fontaine, Leonie Nguemguo Kalamo"
 date: "2023-10-16"
 output: html_document
 ---
@@ -23,7 +23,6 @@ SciViews::R
 
 ```{r}
 Bourdon_tab <- read.csv("TP bourdons - Fiche.csv")
-summary(Bourdon_tab)
 ```
 
 ## Discussion
