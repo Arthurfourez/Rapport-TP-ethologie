@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Résultats
 
 ```{r}
-SciViews::R
+SciViews::R("model", lang = "fr")
 ```
 
 ```{r}
-Bourdon_tab <- read.csv("TP bourdons - Fiche.csv")
+Bourdon_tab <- read$csv("Documents/TP bourdons - Fiche.csv")
 ```
 
 ## Discussion
