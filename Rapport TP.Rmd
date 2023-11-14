@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Etude du comportement et de la morphologie des bourdons"
 author: "Arthur Fourez, Maréva Fontaine, Leonie Nguemguo Kalamo"
 date: "2023-10-16"
 output: html_document
@@ -61,6 +61,7 @@ ggplot(dataset, aes(x = Etho, y = Freq, fill = Exp)) +
   labs(x ="Actes comportementaux", y = "Occurences")
 ```
 
+*Fig*.1. Ce graphique permet de se rendre compte du nombre d'apparition d'un comportement lors de nos divers test.
 
 ```{r}
 p <- ggplot(data = dataset, aes(x = Etho, y = Freq, fill = Rep)) + scale_fill_grey()
@@ -69,6 +70,8 @@ p <- p + facet_grid(. ~ Exp)+ ggtitle("Comportement de la colonie") +
   labs(x ="Actes comportementaux", y = "Occurences")+theme_bw()+ theme(plot.title = element_text(hjust = 0.5))
 p
 ```
+
+*Fig*.2. Ce graphique permet comme le précédent de voir l'occurrence de nos observation mais aussi de comparer les deux réplicas réalisés pour chaque test.
 
 ```{r}
 markov1 <- function (seq){
