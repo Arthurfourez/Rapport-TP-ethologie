@@ -74,26 +74,24 @@ p
 *Fig*.2. Ce graphique permet comme le précédent de voir l'occurrence de nos observation mais aussi de comparer les deux réplicas réalisés pour chaque test.
 
 ```{r}
-markov1 <- function (seq){
-  seq = seq[!is.na(seq)]
-  l = length(unique(seq)) 
-  m = matrix(nrow = l, ncol = l) 
-  rownames(m)= unique(seq)[order(unique(seq))] 
-  colnames(m)= unique(seq)[order(unique(seq))]
-  transition <-function(x,y){ 
-    previous = 0 
-    for (i in seq) { 
-      if (i == x & previous == y) 
-        a = a+1 
+markov1 <- function (seq){ # On donne un nom � la fonction, on nomme les arguments dont elle a besoin
+  seq = seq[!is.na(seq)]# On retire les NA
+  l = length(unique(seq)) # Nombre de comportements uniques dans la s�quence (taille de l'�thogramme) =l
+  m = matrix(nrow = l, ncol = l) # On cr�e une matrice vide lxl
+  rownames(m)= unique(seq)[order(unique(seq))] # On nomme les lignes et colonnes avec les comportements
+  colnames(m)= unique(seq)[order(unique(seq))] # order permet de les ranger par ordre alphab�tique
+  
+  transition <-function(x,y){ # On cr�e une fonction interm�diaire qui permettra de calculer la valeur de chaque case
+    a = 0 # Un compteur qui d�bute � Z�ro.
+    previous = 0 # La valeur de l'�l�ment pr�c�dent dans la s�quence, au d�part il n'y en a pas
+    for (i in seq) { # Boucle en for. Pour tout �l�ment i de la s�quence seq (seq = argument donn� � la fonction)
+      if (i == x & previous == y) { # Si i = x et l'�l�ment qui le pr�c�de = y
+        a = a+1 # Alors on augmente le compteur de 1
       }
-      previous = i 
+      previous = i # L'�l�ment i devient l'�l�ment pr�c�dent et on relance la boucle avec le i suivant.
     }
-    return(a) 
-}
-
-```
-
-```{r}
+    return(a) # Quand la s�quence est termin�e, on sauve la valeur du compteur.
+  }
 for (row in 1:nrow(m)){ # Pour chaque ligne de la matrice.
     for (col in 1:ncol(m)) { # Et pour chaque colonne,
       m[row,col]=transition(rownames(m)[row],colnames(m)[col]) # L'�l�ment correspondant � la ligne et � la colonne  = r�sultat de la fonction interm�diaire pour les noms de ligne et de colonne correspondant
@@ -132,7 +130,7 @@ library(markovchain)
 ```{r}
 markov <- new('markovchain',
   transitionMatrix = t(transitionpourcent), # On doit prendre la transpos�e
-  states = c("a","b","c","d"))
+  states = c("C","B","L","Pt","P","Co","M","N","Po","D","I","A","T"))
 ```
 
 ```{r}
