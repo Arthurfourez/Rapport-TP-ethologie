@@ -130,7 +130,8 @@ library(markovchain)
 ```{r}
 markov <- new('markovchain',
   transitionMatrix = t(transitionpourcent), # On doit prendre la transpos�e
-  states = c("C","B","L","Pt","P","Co","M","N","Po","D","I","A","T"))
+  states = c("Co","I","M","NA","Po","T"))
+
 ```
 
 ```{r}
