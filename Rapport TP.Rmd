@@ -61,7 +61,7 @@ ggplot(dataset, aes(x = Etho, y = Freq, fill = Exp)) +
   labs(x ="Actes comportementaux", y = "Occurences")
 ```
 
-*Fig*.1. Ce graphique permet de se rendre compte du nombre d'apparition d'un comportement lors de nos divers test.
+*Fig*.1. Diagramme en bâtonnets sur l'occurence en fonction des actes comportementaux pour toutes les expériences: Ce graphique permet de se rendre compte du nombre d'apparition d'un comportement lors de nos divers test.
 
 ```{r}
 p <- ggplot(data = dataset, aes(x = Etho, y = Freq, fill = Rep)) + scale_fill_grey()
@@ -71,7 +71,7 @@ p <- p + facet_grid(. ~ Exp)+ ggtitle("Comportement de la colonie") +
 p
 ```
 
-*Fig*.2. Ce graphique permet comme le précédent de voir l'occurrence de nos observation mais aussi de comparer les deux réplicas réalisés pour chaque test.
+*Fig*.2. Diagrammes en bâtonnets sur l'occurence en fonction des actes comportementaux avec facettes en fonction des experiences et pour chaque réplicas: Ce graphique permet comme le précédent de voir l'occurrence de nos observation mais aussi de comparer les deux réplicas réalisés pour chaque test.
 
 ```{r}
 markov1 <- function (seq){ # On donne un nom � la fonction, on nomme les arguments dont elle a besoin
@@ -129,8 +129,8 @@ library(markovchain)
 
 ```{r}
 markov <- new('markovchain',
-  transitionMatrix = t(transitionpourcent), # On doit prendre la transpos�e
-  states = c("Co","I","M","NA","Po","T"))
+  transitionMatrix = t(transitionpourcent), 
+  states = c("Co","I","M", "NA","Po","T"))
 
 ```
 
@@ -144,10 +144,14 @@ plot(markov,
 )
 ```
 
+*Fig.*3.Diagramme de flux sur les comportements: Il permet de connaître les fréquences de comportements grâce au taille des noeuds et les flèches représentent la fréquence de passage d'un comportement à l'autre. Malheureusement les flèches et les noeuds ne sont pas clairement visibles.
+
 ```{r}
 poidsW = data.frame(poids = (rnorm(300, mean=5, sd=1)))
 ggplot(data = poidsW, mapping = aes(x =poids)) + geom_histogram()
 ```
+
+*Fig.*4. Histogramme du poids des individus de la colonie: Grâce à cette histogramme, on peut observer le nombre d'individus pour chaque poids. On voit que le poids le plus représenté dans la colonie est d'environ de 4.8 à 5mg.
 
 ## Discussion
 
