@@ -2,7 +2,7 @@
 title: "Etude du comportement et de la morphologie des bourdons"
 author: "Arthur Fourez, Maréva Fontaine, Leonie Nguemguo Kalamo"
 date: "2023-10-16"
-output: html_document
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
@@ -38,12 +38,16 @@ library(markovchain)
 ```
 
 ```{r}
-test1 = c("M","M","M","M","M","M","M","M","M","M","T","T","T","M","M","NA","M","I","I","M","M","I","M","Po","Po","M","I","I","I","M","M","M","M","M","Co","Co","M","M","I","I","M","M","Co","Co","I","I","T","T","M","M","I","T","M","M","I","I","I","M","NA","NA")
-test2 = c("I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","M")
-test3 = c("M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","T","M","M","M","M","M","C","M","M","L","M","M","M","M","M","M","M","I","M","M","M","M","M","M","I","M","M","I","T","M","I","T","M","M","M","I","I","M","M","M","NA")
-test4 = c("M","M","B","B","B","M","M","B","M","M","M","B","M","M","M","B","B","A","M","M","M","I","A","A","M","M","M","M","M","I","N","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","A","M","M","M","M","M","M","NA","NA","NA")
-test5 = c("M","M","M","M","P","C","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","P","M","M","Pt","I","M","M","M","M","C","M","M","M","M","M","M","M","C","I","I","I","Pt","Pt","Pt","Pt","M","NA","NA","NA","NA","NA","NA")
-test6 = c("C","M","M","M","L","L","M","M","M","D","I","M","M","M","M","M","M","M","C","Pt","M","M","M","M","M","M","C","M","Pt","M","M","M","M","M","M","I","I","M","M","I","M","M","M","I","I","I","I","T","M","M","M","M","M","NA","NA","NA","NA","NA","NA","NA")
+Comportement <- read("Documents/Comportements.xlsx")
+```
+
+```{r}
+test1 = Comportement$test1
+test2 = Comportement$test2
+test3 = Comportement$test3
+test4 = Comportement$test4
+test5 = Comportement$test5
+test6 = Comportement$test6
 ```
 
 ```{r}
@@ -113,7 +117,7 @@ for (row in 1:nrow(m)){ # Pour chaque ligne de la matrice.
 ```
 
 ```{r}
-transition<-markov1(test1)
+transition<-markov1(test3)
 ```
 
 ```{r}
@@ -140,7 +144,7 @@ library(markovchain)
 ```{r}
 markov <- new('markovchain',
   transitionMatrix = t(transitionpourcent), 
-  states = c("Co","I","M", "NA","Po","T"))
+  states = c(Comportement$test3))
 
 ```
 
@@ -148,13 +152,13 @@ markov <- new('markovchain',
 plot(markov,
   edge.arrow.size = 0.25, edge.arrow.width = 1,edge.color ="grey",edge.lty = 1,
   edge.label.cex = 1,edge.label.color = "black",
-  vertex.color = "lightgreen", vertex.shape = "circle",vertex.size = 10*table(test1),
+  vertex.color = "lightgreen", vertex.shape = "circle",vertex.size = 1*table(test1),
   vertex.frame.color= NA,
   vertex.label.color ="black",vertex.label.cex = 2.5
 )
 ```
 
-*Fig.*3.Diagramme de flux sur les comportements: Il permet de connaître les fréquences de comportements grâce au taille des noeuds et les flèches représentent la fréquence de passage d'un comportement à l'autre. Malheureusement les flèches et les noeuds ne sont pas clairement visibles.
+*Fig.*3.Diagramme de flux sur les comportements: Il permet de connaître les fréquences de comportements grâce au taille des noeuds et les flèches représentent la fréquence de passage d'un comportement à l'autre.
 
 ```{r}
 poidsW = data.frame(poids = (rnorm(300, mean=5, sd=1)))
